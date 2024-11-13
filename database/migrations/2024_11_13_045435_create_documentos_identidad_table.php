@@ -17,6 +17,7 @@ return new class extends Migration
             $table->enum('tipo_documento', ['DNI', 'RUC', 'PASAPORTE']);
             $table->string('numero_documento', 50);
             $table->date('fecha_emision')->nullable();
+            $table->string('foto_documento', 255);
         });
     }
 

@@ -38,6 +38,17 @@ class User extends Authenticatable
 		return $this->belongsTo(Role::class);
 	}
 
+	public function getRolNameAttribute()
+	{
+		$roles = [
+			1 => 'Gerente',
+			2 => 'Administrador',
+			3 => 'Cobrador'
+		];
+
+		return $roles[$this->role_id] ?? 'Desconocido';
+	}
+
 	public function cartera_clientes()
 	{
 		return $this->hasMany(CarteraCliente::class, 'cobrador_id');

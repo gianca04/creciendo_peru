@@ -11,6 +11,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -30,6 +31,16 @@
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900 flex">
         <!-- Sidebar -->
         <livewire:layout.sidebar class="hidden sm:block w-64"/>
+
+        @if ( ($message = Session::get('mensaje')) && ($icono = Session::get('icono')) )
+            <script>
+            Swal.fire({
+                title: "Mensaje",
+                text: "{{$message}}",
+                icon: "{{$icono}}"
+            });
+            </script>
+        @endif
 
         <!-- Contenido Principal -->
         <div class="flex-1 flex flex-col sm:ml-64">

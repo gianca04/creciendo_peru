@@ -1,44 +1,15 @@
 <?php
 
-/**
- * Created by Reliese Model.
- */
-
 namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class Cliente
- * 
- * @property int $id
- * @property string $nombre
- * @property string $telefono
- * @property string|null $direccion
- * @property string $documento_identidad
- * @property Carbon $fecha_creacion
- * @property string|null $estado
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * 
- * @property Collection|CarteraCliente[] $cartera_clientes
- * @property Collection|DocumentosIdentidad[] $documentos_identidads
- * @property Collection|HistorialCobro[] $historial_cobros
- * @property Collection|Incidente[] $incidentes
- * @property Collection|InteraccionesCliente[] $interacciones_clientes
- * @property Collection|PagosCliente[] $pagos_clientes
- * @property Collection|Prestamo[] $prestamos
- * @property Collection|ReputacionCrediticium[] $reputacion_crediticia
- * @property Collection|Ubicacione[] $ubicaciones
- *
- * @package App\Models
- */
 class Cliente extends Model
 {
 	protected $table = 'clientes';
-
+	protected $primaryKey = 'id';
 	protected $casts = [
 		'fecha_creacion' => 'datetime'
 	];
@@ -51,6 +22,7 @@ class Cliente extends Model
 		'fecha_creacion',
 		'estado'
 	];
+	public $timestamps = false;
 
 	public function cartera_clientes()
 	{

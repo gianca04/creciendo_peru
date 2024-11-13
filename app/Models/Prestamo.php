@@ -1,43 +1,15 @@
 <?php
 
-/**
- * Created by Reliese Model.
- */
-
 namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class Prestamo
- * 
- * @property int $id
- * @property int|null $cliente_id
- * @property float $monto
- * @property float $tasa_interes
- * @property int $plazo
- * @property Carbon|null $fecha_desembolso
- * @property Carbon|null $fecha_vencimiento
- * @property string|null $estado
- * @property string $tipo_prestamo
- * @property Carbon|null $fecha_aprobacion
- * @property string|null $comentarios
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * 
- * @property Cliente|null $cliente
- * @property Collection|Cuota[] $cuotas
- * @property Collection|DocumentosPrestamo[] $documentos_prestamos
- * @property Collection|GarantiasAvale[] $garantias_avales
- *
- * @package App\Models
- */
 class Prestamo extends Model
 {
 	protected $table = 'prestamos';
-
+	protected $primaryKey = 'id';
 	protected $casts = [
 		'cliente_id' => 'int',
 		'monto' => 'float',
@@ -60,7 +32,7 @@ class Prestamo extends Model
 		'fecha_aprobacion',
 		'comentarios'
 	];
-
+	public $timestamps = false;
 	public function cliente()
 	{
 		return $this->belongsTo(Cliente::class);
